@@ -46,7 +46,7 @@ const getDataFromApi = () => {
           amount:33,
         },],
         travel:[{
-          expenseCategory: "Fun",
+          expenseCategory: "Travel",
           date: "2333",
           amount: 33,
         },],
