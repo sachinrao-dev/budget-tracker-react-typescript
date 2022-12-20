@@ -1,9 +1,13 @@
-import React from "react";
+import { ExpenseProvider } from "./Components/Constant/ExpenseData";
+import expense from "./Components/Constant/ExpenseData";
+import AllExpense from "./Components/Expense/AllExpense";
 
 function App() {
   return (
     <div>
-      <h1>budget tracker</h1>
+      <ExpenseProvider value={expense}>
+        <AllExpense />
+      </ExpenseProvider>
     </div>
   );
 }
