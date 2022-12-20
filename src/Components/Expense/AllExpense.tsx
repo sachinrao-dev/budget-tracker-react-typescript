@@ -18,10 +18,19 @@ type ItemType = {
     { expenseCategory: string,
       date: string,
       amount: number,}[],
-
+  travel:{
+        expenseCategory: "Travel",
+        date: "2333",
+        amount: 33,
+      }[],
+      fun:{
+        expenseCategory: "Fun",
+        date: "23",
+        amount: 22,
+      }[],
 }
 
-type FoodsType = { 
+type ExpenseType = { 
   expenseCategory: string,
   date: string,
   amount: number,}
@@ -50,11 +59,38 @@ function AllExpense(){
           </TableHead>
           <TableBody>
             {allExpense.map((item:ItemType)=>(
-              item.food.map((foods: FoodsType)=>(
+              item.food.map((foods: ExpenseType)=>(
                 <TableRow>
                   <TableCell>{foods.expenseCategory}</TableCell>
                   <TableCell>{foods.date}</TableCell>
                   <TableCell>{foods.amount}</TableCell>
+                </TableRow>
+              ))
+            ))}
+            {allExpense.map((item:ItemType)=>(
+              item.rent.map((rents: ExpenseType)=>(
+                <TableRow>
+                  <TableCell>{rents.expenseCategory}</TableCell>
+                  <TableCell>{rents.date}</TableCell>
+                  <TableCell>{rents.amount}</TableCell>
+                </TableRow>
+              ))
+            ))}
+            {allExpense.map((item:ItemType)=>(
+              item.travel.map((travels: ExpenseType)=>(
+                <TableRow>
+                  <TableCell>{travels.expenseCategory}</TableCell>
+                  <TableCell>{travels.date}</TableCell>
+                  <TableCell>{travels.amount}</TableCell>
+                </TableRow>
+              ))
+            ))}
+            {allExpense.map((item:ItemType)=>(
+              item.rent.map((fun: ExpenseType)=>(
+                <TableRow>
+                  <TableCell>{fun.expenseCategory}</TableCell>
+                  <TableCell>{fun.date}</TableCell>
+                  <TableCell>{fun.amount}</TableCell>
                 </TableRow>
               ))
             ))}
