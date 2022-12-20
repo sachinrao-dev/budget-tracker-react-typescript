@@ -11,10 +11,6 @@ const useStyle = makeStyles({
           background: "#BAD1C2",
           "& td": {
             textAlign: "center",
-            "& a": {
-              textDecoration: "none",
-              cursor: "pointer",
-            },
           },
         },
         "& thead": {

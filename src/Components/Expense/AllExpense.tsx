@@ -20,9 +20,9 @@ function AllExpense(){
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell> Birth Date </TableCell>
-              <TableCell> Occupation </TableCell>
+              <TableCell>Expense Category </TableCell>
+              <TableCell> Expense Data </TableCell>
+              <TableCell> Expense in RS </TableCell>
             </TableRow>
           </TableHead>
         </Table>

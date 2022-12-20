@@ -3,7 +3,7 @@ import { ExpenseProvider } from "./Components/Constant/ExpenseData";
 import expense from "./Components/Constant/ExpenseData";
 import AllExpense from "./Components/Expense/AllExpense";
 import FoodExpense from "./Components/Expense/FoodExpense";
-import NavBar from "./Components/NanBar";
+import NavBar from "./Components/NavBar";
 import RentExpense from "./Components/Expense/RentExpense";
 import FunExpense from "./Components/Expense/FunExpense";
 import TravelExpense from "./Components/Expense/TravelExpense";
