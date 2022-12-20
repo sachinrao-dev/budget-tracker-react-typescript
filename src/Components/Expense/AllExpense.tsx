@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { expenseContext } from "../Constant/ExpenseData";
 import {
   Table,
@@ -10,10 +10,33 @@ import {
 } from "@mui/material";
 import useStyle from "../Style/AllExpenseStyle";
 
+type ItemType = {
+  food: { expenseCategory: string,
+    date: string,
+    amount: number,}[],
+  rent:
+    { expenseCategory: string,
+      date: string,
+      amount: number,}[],
+
+}
+
+type FoodsType = { 
+  expenseCategory: string,
+  date: string,
+  amount: number,}
+
 function AllExpense(){
-  const classes = useStyle();
+
   const allData = useContext(expenseContext);
-  console.log(allData);
+  const [allExpense, setAllExpense] = useState<any>(allData);
+  useEffect(()=>{
+    setAllExpense(allData);
+  }, [allExpense]);
+  const classes = useStyle();
+  allExpense.map((item:ItemType )=>console.log(item.food[0].date)
+  );
+
   return(
     <div className={classes.tableContainer}>
       <TableContainer>
@@ -25,6 +48,17 @@ function AllExpense(){
               <TableCell> Expense in RS </TableCell>
             </TableRow>
           </TableHead>
+          <TableBody>
+            {allExpense.map((item:ItemType)=>(
+              item.food.map((foods: FoodsType)=>(
+                <TableRow>
+                  <TableCell>{foods.expenseCategory}</TableCell>
+                  <TableCell>{foods.date}</TableCell>
+                  <TableCell>{foods.amount}</TableCell>
+                </TableRow>
+              ))
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>

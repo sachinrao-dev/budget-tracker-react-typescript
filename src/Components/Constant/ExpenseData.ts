@@ -3,9 +3,9 @@ import { createContext } from "react";
 interface AllExpense {
   food: [
     {
-      expenseCategory: string;
-      date: string;
-      amount: number;
+      expenseCategory: string,
+      date: string,
+      amount: number,
     }
   ],
   rent: [
