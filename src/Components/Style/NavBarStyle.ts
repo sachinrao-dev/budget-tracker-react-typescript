@@ -13,7 +13,11 @@ const useStyle = makeStyles({
     fontSize: "20px",
     textDecoration: "none",
     cursor: "pointer",
-  }
+  },
+  searchTab: {
+    display: "flex",
+    alignItems: "center",
+  },
   
 });
 

@@ -30,6 +30,8 @@ function FoodExpense(){
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
+
+
   return(
     <div className={classes.tableContainer}>
       <TableContainer>
@@ -42,15 +44,15 @@ function FoodExpense(){
             </TableRow>
           </TableHead>
           <TableBody>
-            {allExpense.map((item:ItemType)=>(
-              item.food.map((foods: ExpenseType)=>(
+            {
+              allExpense.food.map((foods: ExpenseType)=>(
                 <TableRow>
                   <TableCell>{foods.expenseCategory}</TableCell>
                   <TableCell>{foods.date}</TableCell>
                   <TableCell>{foods.amount}</TableCell>
                 </TableRow>
               ))
-            ))}
+            }
           </TableBody>
         </Table>
       </TableContainer>

@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@mui/material";
 import useStyle from "../Style/AllExpenseStyle";
+import { isTemplateExpression } from "typescript";
 
 type ItemType = {
   food: { expenseCategory: string,
@@ -43,8 +44,6 @@ function AllExpense(){
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
-  allExpense.map((item:ItemType )=>console.log(item.food[0].date)
-  );
 
   return (
     <div className={classes.tableContainer}>
@@ -58,16 +57,19 @@ function AllExpense(){
             </TableRow>
           </TableHead>
           <TableBody>
-            {allExpense.map((item:ItemType)=>(
-              item.food.map((foods: ExpenseType)=>(
+            { Object.keys(allExpense).map((key)=>(
+              allExpense[key].map((item:ExpenseType)=>(
                 <TableRow>
-                  <TableCell>{foods.expenseCategory}</TableCell>
-                  <TableCell>{foods.date}</TableCell>
-                  <TableCell>{foods.amount}</TableCell>
+                  <TableCell>{item.expenseCategory}</TableCell>
+                  <TableCell>{item.date}</TableCell>
+                  <TableCell>{item.amount}</TableCell>
                 </TableRow>
               ))
-            ))}
-            {allExpense.map((item:ItemType)=>(
+            ))
+            }
+            
+
+            {/* {allExpense.map((item:ItemType)=>(
               item.rent.map((rents: ExpenseType)=>(
                 <TableRow>
                   <TableCell>{rents.expenseCategory}</TableCell>
@@ -93,7 +95,7 @@ function AllExpense(){
                   <TableCell>{fun.amount}</TableCell>
                 </TableRow>
               ))
-            ))}
+            ))} */}
           </TableBody>
         </Table>
       </TableContainer>

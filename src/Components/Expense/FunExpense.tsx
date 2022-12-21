@@ -41,14 +41,12 @@ function FunExpense(){
             </TableRow>
           </TableHead>
           <TableBody>
-            {allExpense.map((item:ItemType)=>(
-              item.fun.map((foods: ExpenseType)=>(
-                <TableRow>
-                  <TableCell>{foods.expenseCategory}</TableCell>
-                  <TableCell>{foods.date}</TableCell>
-                  <TableCell>{foods.amount}</TableCell>
-                </TableRow>
-              ))
+            {allExpense.fun.map((foods: ExpenseType)=>(
+              <TableRow>
+                <TableCell>{foods.expenseCategory}</TableCell>
+                <TableCell>{foods.date}</TableCell>
+                <TableCell>{foods.amount}</TableCell>
+              </TableRow>
             ))}
           </TableBody>
         </Table>
