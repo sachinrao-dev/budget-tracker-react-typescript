@@ -30,9 +30,6 @@ function FoodExpense(){
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
-  allExpense.map((item:ItemType )=>console.log(item.food[0].date)
-  );
-
   return(
     <div className={classes.tableContainer}>
       <TableContainer>
