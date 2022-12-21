@@ -46,7 +46,7 @@ function AllExpense(){
   allExpense.map((item:ItemType )=>console.log(item.food[0].date)
   );
 
-  return(
+  return (
     <div className={classes.tableContainer}>
       <TableContainer>
         <Table>
