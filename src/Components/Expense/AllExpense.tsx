@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { expenseContext } from "../Constant/ExpenseData";
+import { useParams, useSearchParams } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -9,41 +10,50 @@ import {
   TableRow,
 } from "@mui/material";
 import useStyle from "../Style/AllExpenseStyle";
-import { isTemplateExpression } from "typescript";
-
-type ItemType = {
-  food: { expenseCategory: string,
-    date: string,
-    amount: number,}[],
-  rent:
-    { expenseCategory: string,
-      date: string,
-      amount: number,}[],
-  travel:{
-        expenseCategory: "Travel",
-        date: "2333",
-        amount: 33,
-      }[],
-      fun:{
-        expenseCategory: "Fun",
-        date: "23",
-        amount: 22,
-      }[],
-}
-
-type ExpenseType = { 
-  expenseCategory: string,
-  date: string,
-  amount: number,}
 
 function AllExpense(){
-
+  const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  console.log(searchParams.get("date"), "Query");
+  
+  type ExpenseType = { 
+    expenseCategory: string,
+    date: string,
+    amount: number,}
   const allData = useContext(expenseContext);
-  const [allExpense, setAllExpense] = useState<any>(allData);
+  const [allExpense, setAllExpense] = useState(allData);
   useEffect(()=>{
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
+
+  function renderRows() {
+    const key = params.path;
+
+    if (key && key !== "all") {
+      return (
+        allExpense[key].map((item:ExpenseType)=>(
+          <TableRow key={item.date}>
+            <TableCell>{item.expenseCategory}</TableCell>
+            <TableCell>{item.date}</TableCell>
+            <TableCell>{item.amount}</TableCell>
+          </TableRow>
+        ))
+      );
+    }
+    return (
+      Object.keys(allExpense).map((key)=>(
+        allExpense[key].map((item:ExpenseType)=>(
+          <TableRow key={item.date}>
+            <TableCell>{item.expenseCategory}</TableCell>
+            <TableCell>{item.date}</TableCell>
+            <TableCell>{item.amount}</TableCell>
+          </TableRow>
+        ))
+      ))
+    );
+  }
 
   return (
     <div className={classes.tableContainer}>
@@ -57,45 +67,7 @@ function AllExpense(){
             </TableRow>
           </TableHead>
           <TableBody>
-            { Object.keys(allExpense).map((key)=>(
-              allExpense[key].map((item:ExpenseType)=>(
-                <TableRow>
-                  <TableCell>{item.expenseCategory}</TableCell>
-                  <TableCell>{item.date}</TableCell>
-                  <TableCell>{item.amount}</TableCell>
-                </TableRow>
-              ))
-            ))
-            }
-            
-
-            {/* {allExpense.map((item:ItemType)=>(
-              item.rent.map((rents: ExpenseType)=>(
-                <TableRow>
-                  <TableCell>{rents.expenseCategory}</TableCell>
-                  <TableCell>{rents.date}</TableCell>
-                  <TableCell>{rents.amount}</TableCell>
-                </TableRow>
-              ))
-            ))}
-            {allExpense.map((item:ItemType)=>(
-              item.travel.map((travels: ExpenseType)=>(
-                <TableRow>
-                  <TableCell>{travels.expenseCategory}</TableCell>
-                  <TableCell>{travels.date}</TableCell>
-                  <TableCell>{travels.amount}</TableCell>
-                </TableRow>
-              ))
-            ))}
-            {allExpense.map((item:ItemType)=>(
-              item.rent.map((fun: ExpenseType)=>(
-                <TableRow>
-                  <TableCell>{fun.expenseCategory}</TableCell>
-                  <TableCell>{fun.date}</TableCell>
-                  <TableCell>{fun.amount}</TableCell>
-                </TableRow>
-              ))
-            ))} */}
+            {renderRows()}
           </TableBody>
         </Table>
       </TableContainer>
