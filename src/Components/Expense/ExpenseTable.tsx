@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { expenseContext } from "../Constant/ExpenseData";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -9,21 +9,19 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import useStyle from "../Style/AllExpenseStyle";
+import useStyle from "../Style/MainContainerStyle";
 
-function AllExpense(){
+function ExpenseTable() {
   const params = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
-  
-  console.log(searchParams.get("date"), "Query");
-  
-  type ExpenseType = { 
+  type ExpenseType = {
     expenseCategory: string,
     date: string,
-    amount: number,}
+    amount: number,
+  }
+
   const allData = useContext(expenseContext);
   const [allExpense, setAllExpense] = useState(allData);
-  useEffect(()=>{
+  useEffect(() => {
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
@@ -33,7 +31,7 @@ function AllExpense(){
 
     if (key && key !== "all") {
       return (
-        allExpense[key].map((item:ExpenseType)=>(
+        allExpense[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
             <TableCell>{item.date}</TableCell>
@@ -43,8 +41,8 @@ function AllExpense(){
       );
     }
     return (
-      Object.keys(allExpense).map((key)=>(
-        allExpense[key].map((item:ExpenseType)=>(
+      Object.keys(allExpense).map((key) => (
+        allExpense[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
             <TableCell>{item.date}</TableCell>
@@ -75,4 +73,4 @@ function AllExpense(){
   );
 }
 
-export default AllExpense;
+export default ExpenseTable;

@@ -1,21 +1,17 @@
-import { BrowserRouter, Route ,Routes } from "react-router-dom";
 import { ExpenseProvider } from "./Components/Constant/ExpenseData";
 import expense from "./Components/Constant/ExpenseData";
-import NavBar from "./Components/NavBar";
-import FilterTabBar from "./Components/FilterTabBar";
-import AllExpense from "./Components/Expense/AllExpense";
+import { BrowserRouter ,Route ,Routes } from "react-router-dom";
+import MainContainer from "./Components/MainContainer";
 
 function App() {
   return (
     <div>
       <ExpenseProvider value={expense}>
         <BrowserRouter>
-          <div className="navBar">
-            <NavBar />
-            <FilterTabBar />
-          </div>
           <Routes>
-            <Route path="/:path" element={<AllExpense />} />
+            <Route path="/" element={<MainContainer />}>
+              <Route path="/:path" element={<MainContainer />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ExpenseProvider>

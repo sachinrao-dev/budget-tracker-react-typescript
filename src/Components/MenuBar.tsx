@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
-import useStyle from "./Style/NavBarStyle";
-import Search from "./Search";
+import { NavLink } from "react-router-dom";
+import useStyle from "./Style/MenuBarStyle";
+import SearchIcon from "@mui/icons-material/Search";
 
-function NavBar() {
+function MenuBar() {
   const classes = useStyle();  
   return (
     <div className={classes.searchTab}>
@@ -13,11 +13,11 @@ function NavBar() {
         <NavLink className={classes.nav} to="rent">Rent</NavLink >
         <NavLink className={classes.nav} to="travel">Travel</NavLink >
         <NavLink className={classes.nav} to="fun">Fun</NavLink >
-        <Outlet />
       </div>
-      <Search />
+      <input />
+      <SearchIcon />
     </div>
   );
 }
 
-export default NavBar;
+export default MenuBar;

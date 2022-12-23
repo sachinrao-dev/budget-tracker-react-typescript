@@ -3,10 +3,10 @@ import { makeStyles } from "@mui/styles";
 const useStyle = makeStyles({
   TabBarContainer:{
     // background: "#BAD1C2",
-    "& a.active": {
-      background: "#282A3A",
-      color: "white",
-    },
+    // "& a.active": {
+    //   background: "#282A3A",
+    //   color: "white",
+    // },
   },
   nav: {
     padding: "5px 15px 5px 15px",

@@ -1,6 +1,10 @@
 import { makeStyles } from "@mui/styles";
 
 const useStyle = makeStyles({
+  bar:{
+    display: "flex",
+    justifyContent: "space-between",
+  },
   tableContainer: {
     marginTop: "30px",
     "& div": {

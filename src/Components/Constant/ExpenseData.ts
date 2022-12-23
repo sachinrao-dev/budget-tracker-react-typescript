@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import AllExpense from "../Expense/AllExpense";
+import AllExpense from "../Expense/ExpenseTable";
 
 interface AllExpense {
   food: {
