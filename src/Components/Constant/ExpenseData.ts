@@ -28,53 +28,53 @@ const expense: AllExpense = {
   food:[
     {
       expenseCategory: "Food",
-      date: "22-12-2022",
+      date: "2018-12-12",
       amount: 172
     },
     {
       expenseCategory: "Food",
-      date: "21-12-2022",
+      date: "2017-7-12",
       amount: 162
     },
     {
       expenseCategory: "Food",
-      date: "18-12-2022",
+      date: "2022-12-25",
       amount: 162
     },{
       expenseCategory: "Food",
-      date: "20-12-2022",
+      date: "2021-11-23",
       amount: 152
     },{
       expenseCategory: "Food",
-      date: "19-12-2022",
+      date: "2021-12-30",
       amount: 142
     },{
       expenseCategory: "Food",
-      date: "17-12-2022",
+      date: "2022-12-20",
       amount: 1224
     },{
       expenseCategory: "Food",
-      date: "12-12-2022",
+      date: "2022-12-23",
       amount: 1223
     },{
       expenseCategory: "Food",
-      date: "10-10-2022",
+      date: "2022-12-24",
       amount: 123
     },
   ],
   rent:[{
     expenseCategory: "Rent",
-    date: "2018-04-23",
+    date: "2019-12-23",
     amount:33,
   },],
   travel:[{
     expenseCategory: "Travel",
-    date: "2020-01-23",
+    date: "2020-12-23",
     amount: 33,
   },],
   fun:[{
     expenseCategory: "Fun",
-    date: "2021-05-24",
+    date: "2021-12-12",
     amount: 22,
   },]
 };

@@ -17,8 +17,8 @@ function ExpenseTable() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const dateParams = urlParams.get("date");
-  console.log(dateParams, "date");
-  
+  console.log(dateParams, "params");
+
   // const token = localStorage.getItem("token");
 
   type ExpenseType = {
@@ -38,26 +38,48 @@ function ExpenseTable() {
   const m = date.getMonth() + 1;
   const d = date.getDate();
   const y = date.getFullYear();
-  const currentDate = `${d}-${m}-${y}`;
-  console.log(currentDate, "currentDate");
-    
-
-
+  const currentDate = `${y}-${m}-${d}`;
+  const lastFiveYears = `${y - 5}-${m}-${d}`;
+  const oneYearsDate = `${y - 1}-${m}-${d}`;
+  const weeklyDate = `${y}-${m}-${d - 7}`;
   function renderRows() {
     const key = params.path;
     const filteredDate = JSON.parse(JSON.stringify(allExpense));
 
-    switch(dateParams){      
+    switch (dateParams) {
     case "today":
-      Object.keys(filteredDate).map((key)=>(
-        filteredDate[key] = filteredDate[key].filter((item:ExpenseType)=>(
-          item.date === "21-12-2022"
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
+          item.date === currentDate
         ))
       ));
       break;
+    case "weekly":
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
+          item.date>=weeklyDate
+        ))
+      ));
+      break;
+
+    case "yearly":
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
+          item.date >= oneYearsDate
+        ))
+      ));
+      break;
+    case "last_5_years":
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
+          item.date >= lastFiveYears
+        ))
+      ));
+      break;
+
     }
-    console.log(dateParams, allExpense , filteredDate, "filterDate");
-    
+    console.log(filteredDate, "filterDate");
+
 
     if (key && key !== "all") {
       return (
