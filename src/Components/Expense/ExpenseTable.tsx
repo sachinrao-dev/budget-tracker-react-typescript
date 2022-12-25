@@ -13,27 +13,21 @@ import useStyle from "../Style/MainContainerStyle";
 
 function ExpenseTable() {
   const params = useParams();
-
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const dateParams = urlParams.get("date");
   console.log(dateParams, "params");
-
-  // const token = localStorage.getItem("token");
-
   type ExpenseType = {
     expenseCategory: string,
     date: string,
     amount: number,
   }
-
   const allData = useContext(expenseContext);
   const [allExpense, setAllExpense] = useState(allData);
   useEffect(() => {
     setAllExpense(allData);
   }, [allExpense]);
   const classes = useStyle();
-
   const date = new Date();
   const m = date.getMonth() + 1;
   const d = date.getDate();
@@ -61,7 +55,6 @@ function ExpenseTable() {
         ))
       ));
       break;
-
     case "yearly":
       Object.keys(filteredDate).map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
@@ -76,11 +69,8 @@ function ExpenseTable() {
         ))
       ));
       break;
-
     }
     console.log(filteredDate, "filterDate");
-
-
     if (key && key !== "all") {
       return (
         filteredDate[key].map((item: ExpenseType) => (
