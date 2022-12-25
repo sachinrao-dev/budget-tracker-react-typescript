@@ -13,6 +13,14 @@ import useStyle from "../Style/MainContainerStyle";
 
 function ExpenseTable() {
   const params = useParams();
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const dateParams = urlParams.get("date");
+  console.log(dateParams, "date");
+  
+  // const token = localStorage.getItem("token");
+
   type ExpenseType = {
     expenseCategory: string,
     date: string,
@@ -26,12 +34,34 @@ function ExpenseTable() {
   }, [allExpense]);
   const classes = useStyle();
 
+  const date = new Date();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  const y = date.getFullYear();
+  const currentDate = `${d}-${m}-${y}`;
+  console.log(currentDate, "currentDate");
+    
+
+
   function renderRows() {
     const key = params.path;
+    const filteredDate = JSON.parse(JSON.stringify(allExpense));
+
+    switch(dateParams){      
+    case "today":
+      Object.keys(filteredDate).map((key)=>(
+        filteredDate[key] = filteredDate[key].filter((item:ExpenseType)=>(
+          item.date === "21-12-2022"
+        ))
+      ));
+      break;
+    }
+    console.log(dateParams, allExpense , filteredDate, "filterDate");
+    
 
     if (key && key !== "all") {
       return (
-        allExpense[key].map((item: ExpenseType) => (
+        filteredDate[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
             <TableCell>{item.date}</TableCell>
@@ -41,8 +71,8 @@ function ExpenseTable() {
       );
     }
     return (
-      Object.keys(allExpense).map((key) => (
-        allExpense[key].map((item: ExpenseType) => (
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
             <TableCell>{item.date}</TableCell>
