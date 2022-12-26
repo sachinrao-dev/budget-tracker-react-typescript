@@ -11,6 +11,7 @@ module.exports = {
     },
   },
   rules: {
+    "@typescript-eslint/no-explicit-any": "warn",
     "object-curly-spacing": ["warn", "always"],
     "no-unused-vars": [
       "warn",

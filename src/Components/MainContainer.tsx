@@ -1,14 +1,17 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react";
 import ExpenseData from "./Expense/ExpenseTable";
 import MenuBar from "./MenuBar";
 import DateFilterBar from "./DateFilterBar";
 
 function MainContainer(){
+
+  const [searchParam, setSearchParam] = useState<any>();
   return (
     <div>
-      <MenuBar />
+      <MenuBar setSearchParam={setSearchParam} />
       <DateFilterBar />
-      <ExpenseData />
+      <ExpenseData searchParam= {searchParam} />
     </div>
   );
 }

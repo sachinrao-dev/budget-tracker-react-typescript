@@ -11,7 +11,11 @@ import {
 } from "@mui/material";
 import useStyle from "../Style/MainContainerStyle";
 
-function ExpenseTable() {
+function ExpenseTable(props:any) {
+
+  const { searchParam } = props;
+  console.log(searchParam, "qqqprops");
+
   const params = useParams();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -70,8 +74,15 @@ function ExpenseTable() {
       ));
       break;
     }
+    if(searchParam){
+      Object.keys(filteredDate).map((key) => (
+        filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
+          item.expenseCategory.toLowerCase() === searchParam?.toLowerCase()
+        ))
+      ));
+    }
     console.log(filteredDate, "filterDate");
-    if (key && key !== "all") {
+    if (key && key !== "all" ) {
       return (
         filteredDate[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>

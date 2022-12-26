@@ -1,30 +1,20 @@
 import { createContext } from "react";
 import AllExpense from "../Expense/ExpenseTable";
 
-interface AllExpense {
-  food: {
-      expenseCategory: string,
-      date: string,
-      amount: number,
-    }[],
-  rent:{
-      expenseCategory: string;
-      date: string;
-      amount: number;
-    }[],
-  travel:{
-      expenseCategory: string;
-      date: string;
-      amount: number;
-    }[],
-  fun:{
-      expenseCategory: string;
-      date: string;
-      amount: number;
-    }[],
+interface ExpenseDataType {
+  expenseCategory: string,
+  date: string,
+  amount: number,
 }
 
-const expense: AllExpense = {
+interface AllExpense {
+  food: ExpenseDataType[],
+  rent:ExpenseDataType[],
+  travel:ExpenseDataType[],
+  fun:ExpenseDataType[],
+}
+
+const expense:  AllExpense = {
   food:[
     {
       expenseCategory: "Food",
