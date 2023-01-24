@@ -46,28 +46,28 @@ function ExpenseTable(props:any) {
 
     switch (dateParams) {
     case "today":
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
           item.date === currentDate
         ))
       ));
       break;
     case "weekly":
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
           item.date>=weeklyDate
         ))
       ));
       break;
     case "yearly":
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
           item.date >= oneYearsDate
         ))
       ));
       break;
     case "last_5_years":
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
           item.date >= lastFiveYears
         ))
@@ -75,7 +75,7 @@ function ExpenseTable(props:any) {
       break;
     }
     if(searchParam){
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key] = filteredDate[key].filter((item: ExpenseType) => (
           item.expenseCategory.toLowerCase() === searchParam?.toLowerCase()
         ))
@@ -84,7 +84,7 @@ function ExpenseTable(props:any) {
     console.log(filteredDate, "filterDate");
     if (key && key !== "all" ) {
       return (
-        filteredDate[key].map((item: ExpenseType) => (
+        filteredDate[key]?.map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
             <TableCell>{item.date}</TableCell>
@@ -94,7 +94,7 @@ function ExpenseTable(props:any) {
       );
     }
     return (
-      Object.keys(filteredDate).map((key) => (
+      Object.keys(filteredDate)?.map((key) => (
         filteredDate[key].map((item: ExpenseType) => (
           <TableRow key={item.date}>
             <TableCell>{item.expenseCategory}</TableCell>
