@@ -1,6 +1,6 @@
 ## Project Description
 
-This project is a budget tracking application built using React and TypeScript. It allows users to manage their income and expenses by providing an easy-to-use interface for creating, editing and deleting transactions. The application utilizes a user-friendly interface and provides the ability to view their budget status in real-time, including a pie chart representation of their expenses by category. The system also allows for searching and filtering transactions based on specific criteria such as date and category. Additionally, the project includes a feature to export transactions to a CSV file. The system has an admin panel to manage all transactions. Overall, this project is a comprehensive solution for managing and tracking personal budgets using the power of React and TypeScript.
+This project is a budget tracking application built using React and TypeScript. It allows users to manage their expenses by providing an easy-to-use interface for creating  transactions. The application utilizes a user-friendly interface and provides the ability to view their budget status . The system also allows for searching and filtering transactions based on specific criteria such food , rent, etc. this project is a comprehensive solution for tracking personal budgets using the power of React and TypeScript.
 
 ## Technology Used :
 
